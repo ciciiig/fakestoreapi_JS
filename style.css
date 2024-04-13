@@ -1,0 +1,27 @@
+.search-input::placeholder {
+    color: #aeaeae;
+}
+
+@media (max-width: 285px) {
+    .search-input {
+        width: 130px;
+    }
+}
+
+@media (min-width: 768px) {
+    .search-input {
+        width: 300px;
+    }
+}
+
+@media (min-width: 992px) {
+    .search-input {
+        width: 400px;
+    }
+}
+
+@media (max-width: 210px) {
+    .navbar-toggler {
+        display: none;
+    }
+}

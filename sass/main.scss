@@ -1,0 +1,19 @@
+// change default colors
+$primary: #010101;
+$secondary: #f2f0ea;
+$success: #edcf5d;
+$info: #a4a4a4;
+
+// add new color palette
+@import "../node_modules/bootstrap/scss/_functions";
+@import "../node_modules/bootstrap/scss/_variables";
+
+$custom-theme-colors: (
+    "altlight": rgb(205, 148, 148),
+    "altdark": rgb(96, 37, 37),
+);
+
+$theme-colors: map-merge($custom-theme-colors, $theme-colors);
+
+// import bootstrap
+@import '../node_modules/bootstrap/scss/bootstrap';
