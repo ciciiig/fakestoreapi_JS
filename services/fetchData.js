@@ -7,6 +7,15 @@ export async function fetchCategories(appState) {
     }
 }
 
+export async function fetchProducts(appState) {
+    try {
+        const response = await fetch(appState.url.allProducts);
+        return await response.json();
+    } catch (error) {
+        appState.error = error
+    }
+}
+
 // export async function patchPost(appState) {
 //     const urlPost = `${appState.urlPosts}/${appState.modalWindow.editedPost.id}`;
 //     const payload = appState.modalWindow.editedPost;

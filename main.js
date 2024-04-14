@@ -1,6 +1,7 @@
-import { fetchCategories } from "./services/fetchData.js";
+import { fetchCategories, fetchProducts } from "./services/fetchData.js";
 import { createNavItems } from "./utils/createNavItems.js";
 import { createPaymentMethods } from "./utils/createPaymentMethods.js";
+import { createProcutsCards } from "./utils/createProductCards.js";
 
 const appState = {
     url: {
@@ -9,6 +10,7 @@ const appState = {
     },
     error: '',
     categories: [],
+    products: [],
     paymentMethods: [
         'https://assets-global.website-files.com/63e857eaeaf853471d5335ff/63eb1ce8816711ebecac46d8_stripe.png',
         'https://assets-global.website-files.com/63e857eaeaf853471d5335ff/63eb1ce82d440b7ab84a993f_visa.png',
@@ -24,24 +26,25 @@ const appState = {
 const elements = {
     appContainer: document.getElementById('app-container'),
     navItemsContainer: document.querySelector('#main-nav2 .navbar-nav'),
-    paymentContainer: document.getElementById('payment-container')
+    paymentContainer: document.getElementById('payment-container'),
+    topProductsCardsContainer: document.getElementById('top-products-cards-container'),
 }
 
 function render() {
     createNavItems(elements.navItemsContainer, appState.categories);
     createPaymentMethods(elements.paymentContainer, appState.paymentMethods);
+    createProcutsCards(elements.topProductsCardsContainer, appState.products)
 }
 
 async function initializePage() {
     // fetch data
     appState.categories = await fetchCategories(appState);
+    appState.products = await fetchProducts(appState);
     // if no data stop app working
     if (appState.error) return;
-
     // render
     render()
 }
 
 // RUN APP
 initializePage();
-

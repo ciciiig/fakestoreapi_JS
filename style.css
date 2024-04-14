@@ -60,4 +60,9 @@
 .footer-items li:hover {
     transform: translateX(5px);
     cursor: pointer;
-  }
+}
+
+.img-size {
+    width: auto;
+    max-height: 170px;
+}
